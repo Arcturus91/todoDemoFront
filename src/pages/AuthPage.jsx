@@ -1,59 +1,17 @@
+import { Button, Checkbox, Form, Input } from 'antd';
+import React from 'react';
 
-import './App.css';
-//importar las rutas a utiulizar
-import routes from './config/routes'
-import {Routes,Route} from 'react-router-dom'
-
-
-function App() {
-
-
-
-  return (
-    <div className="App">
-
-    <Routes>
-      {routes().map(({path,element},index_route)=>
-                  // esto es lo mismo que path={path} element={element}
-
-                  <Route key={path} {...{path,element}} />
-
-      )}
-
-
-    </Routes>
-
-
-
-    </div>
-  );
-}
-
-export default App;
-
-/* 
-
-import { Button, Form, Input } from 'antd';
-
-import {loginWs} from './services/auth-ws';
-import axios from 'axios';
-
-
+const AuthPage = () => {
   const onFinish = (values) => {
     console.log('Success:', values);
-    loginWs(values).then(res=>{
-      console.log("la respuesta", res)
-    })
-    .catch(err => {console.log("el error",err)})
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
 
-
-
-<Form
+  return (
+    <Form
       name="basic"
       labelCol={{
         span: 8,
@@ -69,12 +27,12 @@ import axios from 'axios';
       autoComplete="off"
     >
       <Form.Item
-        label="Correo electrónico"
-        name="email"
+        label="Username"
+        name="username"
         rules={[
           {
             required: true,
-            message: 'Please input your email!',
+            message: 'Please input your username!',
           },
         ]}
       >
@@ -95,6 +53,17 @@ import axios from 'axios';
       </Form.Item>
 
       <Form.Item
+        name="remember"
+        valuePropName="checked"
+        wrapperCol={{
+          offset: 8,
+          span: 16,
+        }}
+      >
+        <Checkbox>Remember me</Checkbox>
+      </Form.Item>
+
+      <Form.Item
         wrapperCol={{
           offset: 8,
           span: 16,
@@ -105,5 +74,7 @@ import axios from 'axios';
         </Button>
       </Form.Item>
     </Form>
+  );
+};
 
- */
+export default AuthPage;
