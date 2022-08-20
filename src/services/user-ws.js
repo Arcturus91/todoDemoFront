@@ -1,0 +1,8 @@
+
+import {api} from './api';
+import {successStatus,internalServerError} from '../utils/format-response'
+
+export const editUserWs =(data) => 
+api.patch("/user/edit-profile",data)
+.then(successStatus)
+.catch(internalServerError)
